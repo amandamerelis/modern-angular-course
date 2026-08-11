@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 
 @Component({
   selector: 'app-hello',
@@ -9,9 +9,10 @@ import { Component, signal } from '@angular/core';
 export class Hello {
   protected title = 'Welcome to Modern Angular';
   protected count = signal(0);
+  protected doubleCount = computed(() => this.count() * 2);
 
   protected increaseCounter() {
-    this.count.update(value => value + 1);
+    this.count.update((value) => value + 1);
   }
 
   protected decreaseCounter() {
